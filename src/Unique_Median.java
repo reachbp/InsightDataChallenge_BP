@@ -21,8 +21,8 @@ public class Unique_Median{
 public static void main(String[] args) throws IOException
 {
 	Unique_Median streamingMedian=new Unique_Median();
-	BufferedReader br = new BufferedReader(new FileReader("tweet_input/tweets.txt"));
-	File file = new File("tweet_output/f2.txt");
+	BufferedReader br = new BufferedReader(new FileReader(args[0]));
+	File file = new File(args[1]);
 	//Create file if doesn't exist
 	file.createNewFile();
 	FileWriter writer = new FileWriter(file);
@@ -33,7 +33,7 @@ public static void main(String[] args) throws IOException
         while (nextTweet != null) {
            //Pass Line to getWordCountFromLine function
         	int l1=getUniqueWordCount(nextTweet);
-        	System.out.println("line count"+l1);
+        	
             streamingMedian.addNumberToStream(l1);
             writer.write(streamingMedian.getMedian().toString()+"\n");
             nextTweet = br.readLine();
